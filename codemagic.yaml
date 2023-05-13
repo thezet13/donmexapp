@@ -14,9 +14,7 @@ workflows:
         - push
       cancel_previous_builds: false
     artifacts:
-      - build/**/outputs/apk/**/*.apk
-      - build/**/outputs/**/*.aab
-      - build/macos/**/*.ipa
+      - build/**/outputs/macos/**/*.ipa
     publishing:
       email:
         recipients:
