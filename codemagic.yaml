@@ -16,6 +16,7 @@ workflows:
     artifacts:
       - build/**/outputs/apk/**/*.apk
       - build/**/outputs/**/*.aab
+      - build/macos/**/*.ipa
     publishing:
       email:
         recipients:
