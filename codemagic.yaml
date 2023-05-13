@@ -1,25 +1,33 @@
 workflows:
-  simple-ios-workflow:
-    name: Simple iOS Workflow
-    instance_type: mac_mini_m1
+  simple-android-workflow:
+    name: Simple Android Workflow
+    instance_type: mac_mini
     max_build_duration: 60
     environment:
       flutter: stable
-      xcode: latest
-      cocoapods: default
     scripts:
+      - name: Set up debug keystore
+        script: |
+          rm -f ~/.android/debug.keystore
+          keytool -genkeypair \
+            -alias androiddebugkey \
+            -keypass android \
+            -keystore ~/.android/debug.keystore \
+            -storepass android \
+            -dname 'CN=Android Debug,O=Android,C=US' \
+            -keyalg 'RSA' \
+            -keysize 2048 \
+            -validity 10000          
       - name: Set up local properties
         script: echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/android/local.properties"
       - name: Get Flutter packages
         script: flutter packages pub get
-      - name: Install Podfiles
-        script: find . -name "Podfile" -execdir pod install \;
-      - name: Build debug iOS app
-        script: flutter build ios --debug --no-codesign
+      - name: Build debug apk
+        script: flutter build apk --debug
     artifacts:
+      - build/**/outputs/**/*.apk
+      - build/**/outputs/**/*.aab
       - build/**/outputs/**/mapping.txt
-      - build/ios/ipa/*.ipa
-      - /tmp/xcodebuild_logs/*.log
       - flutter_drive.log
     publishing:
       email:
