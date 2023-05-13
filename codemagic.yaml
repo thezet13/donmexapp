@@ -1,23 +1,27 @@
 workflows:
-  my-workflow:
-    name: donmex workflow
-    instance_type: mac_mini_m1
+  simple-ios-workflow:
+    name: Simple iOS Workflow
+    instance_type: mac_mini
     max_build_duration: 60
     environment:
       flutter: stable
       xcode: latest
-    cache:
-      cache_paths:
-        - ~/.pub-cache
-    triggering:
-      events:
-        - push
-      cancel_previous_builds: false
+      cocoapods: default
+    scripts:
+      - name: Set up local properties
+        script: echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/android/local.properties"
+      - name: Get Flutter packages
+        script: flutter packages pub get
+      - name: Install Podfiles
+        script: find . -name "Podfile" -execdir pod install \;
+      - name: Build debug iOS app
+        script: flutter build ios --debug --no-codesign
     artifacts:
-      - build/**/outputs/macos/**/*.ipa
+      - build/**/outputs/**/mapping.txt
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+      - flutter_drive.log
     publishing:
       email:
         recipients:
-          - thezet@gmail.com
-      scripts:
-        - echo 'donmex done'
+          - name@gmail.com
