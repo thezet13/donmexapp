@@ -21,7 +21,8 @@ jobs:
       uses: subosito/flutter-action@v1
       with:
         flutter-version: '3.0.0'   # specify the Flutter version you're using
-
+    - name: Install Flutter packages
+      run: flutter pub get
     - name: Generate iOS Podfile
       run: |
         echo "platform :ios, '12.0'" > ios/Podfile
