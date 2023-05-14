@@ -35,9 +35,6 @@ jobs:
         echo "  # your other pod dependencies go here" >> ios/Podfile
         echo "end" >> ios/Podfile
 
-    - name: Build Flutter app (updates Podfile)
-      run: flutter build ios --no-codesign
-
     - name: Push Podfile
       run: |
         git config --global user.name 'thezet13'
