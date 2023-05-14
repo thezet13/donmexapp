@@ -12,7 +12,6 @@ permissions:
   
 jobs:
   build:
-
     runs-on: macOS-latest
 
     steps:
@@ -31,7 +30,8 @@ jobs:
         echo "  use_frameworks!" >> ios/Podfile
         echo "  use_modular_headers!" >> ios/Podfile
         echo "" >> ios/Podfile
-        echo "  flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))" >> ios/Podfile
+        echo "  # Pods for Runner" >> ios/Podfile
+        echo "  # your other pod dependencies go here" >> ios/Podfile
         echo "end" >> ios/Podfile
 
     - name: Push Podfile
