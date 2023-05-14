@@ -24,7 +24,6 @@ jobs:
         flutter-version: '3.0.0'   # specify the Flutter version you're using
 
     - name: Generate iOS Podfile
-    - name: Generate Podfile
       run: |
         echo "platform :ios, '11.0'" > ios/Podfile
         echo "" >> ios/Podfile
