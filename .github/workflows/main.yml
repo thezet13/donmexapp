@@ -1,4 +1,4 @@
-name: Flutter Podfile generation 13
+name: Flutter Podfile generation 15
 
 on:
   push:
@@ -24,10 +24,24 @@ jobs:
         flutter-version: '3.0.0'   # specify the Flutter version you're using
 
     - name: Generate iOS Podfile
+    - name: Generate Podfile
       run: |
-        flutter create .
-        git config --global user.email "thezet@gmail.com"
-        git config --global user.name "thezet13"
-        git commit -am "Add Podfile"
-        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/thezet13/donmexapp.git
+        echo "platform :ios, '11.0'" > ios/Podfile
+        echo "" >> ios/Podfile
+        echo "target 'Runner' do" >> ios/Podfile
+        echo "  use_frameworks!" >> ios/Podfile
+        echo "  use_modular_headers!" >> ios/Podfile
+        echo "" >> ios/Podfile
+        echo "  flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))" >> ios/Podfile
+        echo "end" >> ios/Podfile
+
+    - name: Push Podfile
+      run: |
+        git config --global user.name 'Your Name'
+        git config --global user.email 'your.email@example.com'
+        git add ios/Podfile
+        git commit -m "Add Podfile"
         git push
+
+    - name: Run tests
+      run: flutter test
