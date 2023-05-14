@@ -19,7 +19,6 @@ jobs:
 
     - name: Generate iOS Podfile
       run: |
-        cd ./donmexapp
         flutter create .
         git config --global user.email "thezet@gmail.com"
         git config --global user.name "RomanK"
