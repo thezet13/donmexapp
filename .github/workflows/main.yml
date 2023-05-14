@@ -24,16 +24,16 @@ jobs:
 
     - name: Generate iOS Podfile
       run: |
-        echo "platform :ios, '11.0'" > ios/Podfile
+        echo "platform :ios, '12.0'" > ios/Podfile
         echo "" >> ios/Podfile
         echo "target 'Runner' do" >> ios/Podfile
         echo "  use_frameworks!" >> ios/Podfile
         echo "  use_modular_headers!" >> ios/Podfile
         echo "" >> ios/Podfile
         echo "  # Pods for Runner" >> ios/Podfile
-        echo "  pod 'audio_session', '~> version'" >> ios/Podfile  # replace 'version' with your desired version
-        echo "  # your other pod dependencies go here" >> ios/Podfile
+        echo "  pod 'audio_session', '~> 1.0.0'" >> ios/Podfile  # replace '1.0.0' with your desired version
         echo "end" >> ios/Podfile
+
 
     - name: Install Pods
       run: |
