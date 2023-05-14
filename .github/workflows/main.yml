@@ -1,0 +1,27 @@
+name: Flutter Podfile generation
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: macOS-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v1
+      with:
+        flutter-version: '2.8.1'   # specify the Flutter version you're using
+
+    - name: Generate iOS Podfile
+      run: |
+        cd ./donmexapp
+        flutter create .
+        git config --global user.email "thezet@gmail.com"
+        git config --global user.name "RomanK"
+        git commit -am "Add Podfile"
+        git push
