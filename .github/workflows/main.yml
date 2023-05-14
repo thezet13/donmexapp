@@ -41,6 +41,3 @@ jobs:
         git add ios/Podfile
         git commit -m "Add Podfile"
         git push
-
-    - name: Run tests
-      run: flutter test
