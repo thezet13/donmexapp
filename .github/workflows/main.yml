@@ -5,6 +5,7 @@ on:
     branches: [ main ]
     
 permissions:
+  contents: write
   pull-requests: write
   issues: write
   repository-projects: write
@@ -30,5 +31,3 @@ jobs:
         git commit -am "Add Podfile"
         git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/thezet13/donmexapp.git
         git push
-env:
-    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
