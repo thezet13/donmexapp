@@ -1,4 +1,4 @@
-name: Flutter Podfile generation
+name: Flutter Podfile generation 2
 
 on:
   push:
