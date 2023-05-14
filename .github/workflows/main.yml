@@ -1,9 +1,14 @@
-name: Flutter Podfile generation 11
+name: Flutter Podfile generation 13
 
 on:
   push:
     branches: [ main ]
-
+    
+permissions:
+  pull-requests: write
+  issues: write
+  repository-projects: write
+  
 jobs:
   build:
 
