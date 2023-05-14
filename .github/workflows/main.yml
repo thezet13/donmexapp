@@ -15,7 +15,7 @@ jobs:
     - name: Setup Flutter
       uses: subosito/flutter-action@v1
       with:
-        flutter-version: '2.10.0'   # specify the Flutter version you're using
+        flutter-version: '3.0.0'   # specify the Flutter version you're using
 
     - name: Generate iOS Podfile
       run: |
