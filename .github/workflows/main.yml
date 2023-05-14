@@ -36,8 +36,8 @@ jobs:
 
     - name: Push Podfile
       run: |
-        git config --global user.name 'Your Name'
-        git config --global user.email 'your.email@example.com'
+        git config --global user.name 'thezet13'
+        git config --global user.email 'thezet@gmail.com'
         git add ios/Podfile
         git commit -m "Add Podfile"
         git push
