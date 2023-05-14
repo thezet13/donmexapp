@@ -1,15 +1,15 @@
-name: Flutter Podfile generation 15
+name: Flutter Podfile generation 17
 
 on:
   push:
     branches: [ main ]
-    
+
 permissions:
   contents: write
   pull-requests: write
   issues: write
   repository-projects: write
-  
+
 jobs:
   build:
     runs-on: macOS-latest
@@ -31,8 +31,14 @@ jobs:
         echo "  use_modular_headers!" >> ios/Podfile
         echo "" >> ios/Podfile
         echo "  # Pods for Runner" >> ios/Podfile
+        echo "  pod 'audio_session', '~> version'" >> ios/Podfile  # replace 'version' with your desired version
         echo "  # your other pod dependencies go here" >> ios/Podfile
         echo "end" >> ios/Podfile
+
+    - name: Install Pods
+      run: |
+        cd ios
+        pod install
 
     - name: Push Podfile
       run: |
