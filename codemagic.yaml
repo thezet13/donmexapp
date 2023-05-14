@@ -12,8 +12,6 @@ workflows:
         script: echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/android/local.properties"
       - name: Get Flutter packages
         script: flutter packages pub get
-      - name: podfiles
-        script: cd ios && pod init && git add . && git commit -m "Add Podfile to project" && git push
       - name: Install Podfiles
         script: find . -name "Podfile" -execdir pod install \;
       - name: Build debug iOS app
