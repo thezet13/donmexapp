@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:donmexapp/controllers/products_menu_controller.dart';
 import 'package:donmexapp/pages/cart/cart_history.dart';
@@ -32,7 +31,6 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
 
   // ignore: unused_field
   int _selectedIndex = 0;
-  late PersistentTabController _controller;
 
   List pages = [
     const MainPage(),
@@ -50,7 +48,6 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
-    _controller = PersistentTabController(initialIndex: 0);
     _loadResource();
     WidgetsBinding.instance.addObserver(this);
     print('iam initial');
@@ -69,35 +66,6 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
       const CartHistory(),
       MapPage(),
       LanguagePage(),
-    ];
-  }
-
-  List<PersistentBottomNavBarItem> _navBarsItems() {
-    return [
-      PersistentBottomNavBarItem(
-        icon: const Icon(CupertinoIcons.home),
-        title: ("Home"),
-        activeColorPrimary: AppColors.colorGreen,
-        inactiveColorPrimary: CupertinoColors.black,
-      ),
-      PersistentBottomNavBarItem(
-        icon: const Icon(CupertinoIcons.cart_fill),
-        title: ("Cart"),
-        activeColorPrimary: AppColors.colorGreen,
-        inactiveColorPrimary: CupertinoColors.black,
-      ),
-      PersistentBottomNavBarItem(
-        icon: const Icon(CupertinoIcons.map_fill),
-        title: ("Map"),
-        activeColorPrimary: AppColors.colorGreen,
-        inactiveColorPrimary: CupertinoColors.black,
-      ),
-      PersistentBottomNavBarItem(
-        icon: const Icon(CupertinoIcons.person_fill),
-        title: ("Profile"),
-        activeColorPrimary: AppColors.colorGreen,
-        inactiveColorPrimary: CupertinoColors.black,
-      ),
     ];
   }
 
