@@ -30,7 +30,7 @@ dependencies:
   flutter:
     sdk: flutter
   persistent_bottom_nav_bar: ^4.0.0
-  audio_session: ^1.0.0
+  audio_session: ^0.1.6
   
 
   # The following adds the Cupertino Icons font to your application.
