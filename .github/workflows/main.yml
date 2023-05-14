@@ -1,15 +1,15 @@
-name: Flutter Podfile generation 17
+name: Flutter Podfile generation 15
 
 on:
   push:
     branches: [ main ]
-
+    
 permissions:
   contents: write
   pull-requests: write
   issues: write
   repository-projects: write
-
+  
 jobs:
   build:
     runs-on: macOS-latest
@@ -39,7 +39,7 @@ jobs:
       run: |
         cd ios
         pod install
-
+        
     - name: Push Podfile
       run: |
         git config --global user.name 'thezet13'
