@@ -12,6 +12,8 @@ workflows:
         script: echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/android/local.properties"
       - name: Get Flutter packages
         script: flutter packages pub get
+      - name: Install Podfiles
+        script: find . -name "Podfile" -execdir pod install \;
       - name: Build debug iOS app
         script: flutter build ios --debug --no-codesign
     artifacts:
