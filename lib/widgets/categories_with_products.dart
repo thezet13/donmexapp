@@ -10,7 +10,7 @@ import 'package:donmexapp/utils/dimensions.dart';
 class CategoryWithProducts extends StatelessWidget {
   final String categoryName;
 
-  CategoryWithProducts({super.key, required this.categoryName});
+  CategoryWithProducts({Key? key, required this.categoryName});
 
   @override
   Widget build(BuildContext context) {
