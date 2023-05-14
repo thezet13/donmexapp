@@ -25,26 +25,23 @@ jobs:
       run: flutter pub get
     - name: Generate iOS Podfile
       run: |
-        echo "platform :ios, '12.0'" > ios/Podfile
+        echo "platform :ios, '11.0'" > ios/Podfile
         echo "" >> ios/Podfile
         echo "target 'Runner' do" >> ios/Podfile
         echo "  use_frameworks!" >> ios/Podfile
         echo "  use_modular_headers!" >> ios/Podfile
         echo "" >> ios/Podfile
         echo "  # Pods for Runner" >> ios/Podfile
-        echo "  pod 'audio_session', '~> 1.0.0'" >> ios/Podfile  # replace '1.0.0' with your desired version
+        echo "  # your other pod dependencies go here" >> ios/Podfile
         echo "end" >> ios/Podfile
 
+    - name: Build Flutter app (updates Podfile)
+      run: flutter build ios --no-codesign
 
-    - name: Install Pods
-      run: |
-        cd ios
-        pod install
-        
     - name: Push Podfile
       run: |
         git config --global user.name 'thezet13'
         git config --global user.email 'thezet@gmail.com'
         git add ios/Podfile
-        git commit -m "Add Podfile"
+        git commit -m "Update Podfile"
         git push
