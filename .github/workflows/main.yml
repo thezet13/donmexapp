@@ -24,3 +24,5 @@ jobs:
         git config --global user.name "thezet13"
         git commit -am "Add Podfile"
         git push
+env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
