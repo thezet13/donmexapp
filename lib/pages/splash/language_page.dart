@@ -8,7 +8,7 @@ import 'language_widget.dart';
 
 class LanguagePage extends StatelessWidget {
   final bool fromMenu;
-  const LanguagePage({super.key, this.fromMenu = false});
+  const LanguagePage({Key? key, this.fromMenu = false});
 
   @override
   Widget build(BuildContext context) {

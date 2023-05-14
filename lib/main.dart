@@ -10,8 +10,8 @@ import 'package:flutter/services.dart';
 
 Future<void> main() async {
   // setPathUrlStrategy();
-WidgetsFlutterBinding.ensureInitialized();
-    await Future.delayed(Duration(milliseconds: 1000));
+  WidgetsFlutterBinding.ensureInitialized();
+  await Future.delayed(Duration(milliseconds: 1000));
 
   Map<String, Map<String, String>> _languages = await dep.init();
 
@@ -21,7 +21,7 @@ WidgetsFlutterBinding.ensureInitialized();
 class MyApp extends StatelessWidget {
   final Map<String, Map<String, String>> languages;
 
-  const MyApp({super.key, required this.languages});
+  const MyApp({Key? key, required this.languages});
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {

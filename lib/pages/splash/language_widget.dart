@@ -12,7 +12,7 @@ class LanguageWidget extends StatelessWidget {
   final int index;
   final bool fromMenu;
   const LanguageWidget(
-      {super.key,
+      {Key? key,
       required this.languageModel,
       required this.localizationController,
       required this.index,

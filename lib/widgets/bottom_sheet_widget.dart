@@ -11,7 +11,7 @@ class BottomSheetWidget extends StatefulWidget {
   final Function(String) showSpotsBottomSheet;
 
   const BottomSheetWidget(
-      {super.key, required this.onOptionSelected, required this.showSpotsBottomSheet});
+      {Key? key, required this.onOptionSelected, required this.showSpotsBottomSheet});
 
   @override
   _BottomSheetWidgetState createState() => _BottomSheetWidgetState();

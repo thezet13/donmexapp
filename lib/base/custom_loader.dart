@@ -3,7 +3,7 @@ import 'package:donmexapp/utils/colors.dart';
 import 'package:donmexapp/utils/dimensions.dart';
 
 class CustomLoader extends StatelessWidget {
-  const CustomLoader({super.key});
+  const CustomLoader({Key? key});
 
   @override
   Widget build(BuildContext context) {
