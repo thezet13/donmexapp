@@ -1,4 +1,4 @@
-name: Flutter Podfile generation 19
+name: Flutter Podfile generation 21
 
 on:
   push:
@@ -34,6 +34,15 @@ jobs:
         echo "  # Pods for Runner" >> ios/Podfile
         echo "  # your other pod dependencies go here" >> ios/Podfile
         echo "end" >> ios/Podfile
+
+    - name: Install Pods
+      run: cd ios && pod install && cd ..
+
+    - name: Update Pods
+      run: cd ios && pod update && cd ..
+      
+    - name: Build iOS app
+      run: flutter build ios --release --no-codesign
 
     - name: Push Podfile
       run: |
